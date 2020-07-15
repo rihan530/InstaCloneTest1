@@ -36,6 +36,7 @@ public class ProfileActivity extends AppCompatActivity {
         mProgressBar.setVisibility(View.GONE);
         // 하단의 내비게이션 뷰를 작동시킴
         setupBottomNavigationView();
+        setupToolBar();
     }
 
     private void setupToolBar() {
