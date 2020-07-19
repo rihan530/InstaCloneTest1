@@ -1,4 +1,4 @@
-package com.coolwhite.instaclonetest.Home;
+package com.coolwhite.instaclonetest.Utils;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

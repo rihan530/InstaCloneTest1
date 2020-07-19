@@ -12,6 +12,7 @@ import android.view.MenuItem;
 
 import com.coolwhite.instaclonetest.R;
 import com.coolwhite.instaclonetest.Utils.BottomNavigationViewHelper;
+import com.coolwhite.instaclonetest.Utils.SectionPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
