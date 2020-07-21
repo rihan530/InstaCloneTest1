@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.coolwhite.instaclonetest.R;
 import com.coolwhite.instaclonetest.Utils.BottomNavigationViewHelper;
@@ -20,6 +21,9 @@ public class HomeActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private static final int ACTIVITY_NUM = 0;
 
+    private long backKeyPressedTime = 0;
+    private Toast toast;
+
     private Context mContext = HomeActivity.this;
 
     @Override
@@ -30,6 +34,20 @@ public class HomeActivity extends AppCompatActivity {
 
         setupBottomNavigationView();
         setupViewPager();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(System.currentTimeMillis() > backKeyPressedTime + 2000) {
+            backKeyPressedTime = System.currentTimeMillis();
+            toast = Toast.makeText(this, "\'뒤로\' 버튼을 한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT);
+            toast.show();
+            return;
+        }
+        if(System.currentTimeMillis() <= backKeyPressedTime + 2000) {
+            finish();
+            toast.cancel();
+        }
     }
 
     //Responsible for adding  the 3 tabs : Camera, Home, Messages
@@ -55,9 +73,9 @@ public class HomeActivity extends AppCompatActivity {
         BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
         // Helper를 사용하면 밑처럼 하지 않고 바로 호출가능
 //        bottomNavigationViewEx.enableAnimation(false);
-//        bottomNavigationViewEx.enableItemShiftingMode(false);
-//        bottomNavigationViewEx.enableShiftingMode(false);
-//        bottomNavigationViewEx.setTextVisibility(false);
+////        bottomNavigationViewEx.enableItemShiftingMode(false);
+////        bottomNavigationViewEx.enableShiftingMode(false);
+////        bottomNavigationViewEx.setTextVisibility(false);
 
         BottomNavigationViewHelper.enableNavigation(mContext, bottomNavigationViewEx);
         // Activity마다 별도의 Intent를 새로 선언하면 코드가 너무 길어지므로 Helper에서 정의한 것을 불러옴
